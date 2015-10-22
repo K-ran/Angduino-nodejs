@@ -11,13 +11,16 @@ angduino.factory('socket',function(){
 angduino.directive('angduinoButton',function(socket){
     return {
         restrict:'A',
-        scope: {
-          value:'=angduinoButton'
-        },
         link: function(scope, element, attrs, ctrl){
+            var html = element.html();
+            element.html(attrs.on);
             element.on("click",function(){
+                        var html2 = element.html();
                         socket.emit("button",attrs.angduinoButton);
-                        console.log("Emmited");
+                        if(html2==attrs.off)
+                            element.html(attrs.on);
+                        else
+                            element.html(attrs.off);
                      });
         }
     }

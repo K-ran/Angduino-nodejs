@@ -2,9 +2,9 @@
 var SerialPort = require("serialport").SerialPort
 var sleep = require('sleep');
 var express = require('express');
-var serialPort = new SerialPort("/dev/ttyACM0");
 var app=express();
 var io = require('socket.io').listen(app.listen(3000,serverOn));
+var serialPort = new SerialPort("/dev/ttyACM0");
 
 app.use(express.static(__dirname + '/site/'));
 app.get('/', function(req, res){
@@ -35,10 +35,10 @@ serialPort.open(function (error) {
     sleep.sleep(1);
     console.log('open');
     io.on('connection', function(socket){
-      console.log('a user connected');
+      console.log('User Connected');
       socket.on('button', function(msg){
           serialPort.write(msg+"\n", function(err, results) {
-            console.log('error :' + err)
+            console.log('error :' + err);
           });
       });
     });
