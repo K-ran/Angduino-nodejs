@@ -1,20 +1,27 @@
-<!doctype html>
+<!doctype html
+<!--  This the webpage that will be exposed to other/user -->
 <html>
   <head>
-    <title>Angduino Controller</title>
+    <title>Angduino Controller<!-- Any name you wish in the title --></title>
     <style>
+    /* Any styling you wish to give*/
     .button { width: 50%; background: rgb(130, 224, 255); border: none; padding: 10px; }
     </style>
   </head>
-  <body ng-app="angduino">
-  <div ng-controller="appController">
+  <body ng-app="angduino">            <!-- Necessary to add  ng-app="angduino"   -->
+  <div ng-controller="appController"> <!-- Necessary to add  ng-controller="angduino" -->
       <!-- Necessary scripts -->
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src = "angduino.js"></script>
-    <!--  -->
-
-    <button class="button" angduino-button="led1" off="Led1 off" on="Led1 on"></button>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script><!-- Includeing Socket io -->
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script> <!-- Including angularjs -->
+    <script src = "angduino.js"></script> <!-- including angduino.js -->
+    <!-- Imporatant -->
+    <button class="button" angduino-button="led2" off="Led1 off" on="Led1 on"></button>
+    <!-- To add a button The three tags are important -->
+    <!-- angduino-button="led2"  This sets the key for your button. It should match
+         with the key you set in the arduino code. -->
+    <!-- off = "anything you want to show when button is on"  -->
+    <!-- on = "anything you want to show when button is off"  -->
+    <!--   -------------------  -->
   </div>
   </body>
 </html>
