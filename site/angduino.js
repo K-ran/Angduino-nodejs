@@ -25,7 +25,6 @@ angduino.directive('angduinoButton',function(socket,$parse){
                     if(scope[attrs.angduinoButton]==1)
                         element.html(attrs.off);
                     else element.html(attrs.on);
-                    console.log("Got the packeage");
                 }
                 //console.log(msg);
             });
@@ -33,8 +32,43 @@ angduino.directive('angduinoButton',function(socket,$parse){
             element.on("click",function(){
                         var html2 = element.html();
                         socket.emit("button","button");
-                        socket.emit("button",attrs.angduinoButton);
+                            socket.emit("button",attrs.angduinoButton);
                      });
+        }
+    }
+});
+
+
+angduino.directive('angduinoSerialOut',function(socket,$parse){
+    return {
+        restrict:'A',
+        link: function(scope, element, attrs, ctrl){
+            socket.on('angduino-data', function(msg){
+                var dataObject=JSON.parse(msg);
+                if(typeof dataObject.serial != "undefined"){
+                        var html = element.html();
+                        element.html(html+"&#13;"+dataObject.serial);
+                }
+                //console.log(msg);
+            });
+        }
+    }
+});
+
+
+angduino.directive('angduinoSerialIn',function(socket,$parse,$compile){
+    return {
+        restrict:'A',
+        link: function(scope, element, attrs, ctrl){
+            //
+            element.bind("keyup", function (event) {
+                        if(event.which === 13) {
+                            var html = element.html();
+                            socket.emit("serial","serial");
+                            socket.emit("serial",scope.SerialValue);
+                            console.log(scope.SerialValue);
+                        }
+                    });
         }
     }
 });
