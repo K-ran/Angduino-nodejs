@@ -12,7 +12,7 @@ This is the node js server for Angduino library. This library can help you easil
 
 Recommended OS is linux.
 
-To run the serve, download the zip file, and extract it:
+To run the server, download the zip file, and extract it:
 
 1. Open terminal(linux) or cmd(Windows). 
 2. Navigate to the main diectory in the zip.
