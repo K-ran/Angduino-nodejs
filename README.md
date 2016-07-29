@@ -48,6 +48,7 @@ The MIT License (MIT)
 
 #Contributers
 [Karan Purohit](https://github.com/K-ran/)
+[Rohan Goel](https://github.com/goelrohan6)
 
 More contributers required. 
     
